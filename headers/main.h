@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "./headers/sqlConnection.h"
 
 using namespace std;
 
@@ -13,7 +12,7 @@ class Produit{
         string desc;
         float PU;
         double qte;
-        vector <Produit> ProduitList;
+        // vector <Produit> ProduitList;
     
     public:
         Produit(){}
