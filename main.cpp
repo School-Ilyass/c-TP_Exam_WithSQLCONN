@@ -29,9 +29,9 @@ int main(){
 
         if (choix == 1) {
             // creation d'objet  
+            system("clear");
             cout << "---------------Produit-------------" << endl;
 
-            system("clear");
 
             char choix;
 
@@ -117,18 +117,113 @@ int main(){
             if (choix == 'c')
             {
               /* code */
-
+              system("clear");
               SQLSelectProduit();
+              
             }
             
 
             // cout << "Selected produit" << endl;
         }
-        else if (choix == 2) {
+        if (choix == 2) {
             system("clear");
-            // cout << "Selected client" << endl;
+            // creation d'objet  
+            cout << "---------------Client-------------" << endl;
+
+
+            char choix;
+
+            cout << "a ) Ajouter un Client" << endl;
+            cout << "b ) Modifier un Client" << endl;
+            cout << "c ) Afficher les Clients" << endl;
+
+            cout << "Choix : ";
+
+            cin >> choix;
+
+            if (choix == 'a')
+            {
+              /* code */
+              int id;
+              string nom;
+              string prenom;
+              string addresse;
+
+
+              system("clear");
+
+
+              cout << "--------------- Creation Client -------------" << endl;
+
+              cout << "ID : ";
+              cin >> id;
+              cout << "nom : ";
+              cin >> nom;
+              cout << "prenom : ";
+              cin >> prenom;
+              cout << "addresse : ";
+              cin >> addresse;
+
+              Client c (id,nom,prenom,addresse);
+
+              SQLInsertClient(ref(c));
+            }
+
+            if (choix == 'b')
+            {
+              /* code */
+
+              system("clear");
+              cout << "--------------- Select Produit -------------" << endl;
+              SQLSelectProduit();
+
+
+               /* code */
+              int id;
+              string nom;
+              string desc;
+              float PU;
+              double qte;
+              system("clear");
+
+              
+              cout << "Quelle ID ? " << endl;
+              cout << "ID : ";
+              cin >> id;
+
+
+              system("clear");
+
+              cout << "--------------- Modifier Produit NO " << id  << " ------------- "<< endl;
+
+              cout << "nom : ";
+              cin >> nom;
+              cout << "desc : ";
+              cin >> desc;
+              cout << "PU : ";
+              cin >> PU;
+              cout << "qte : ";
+              cin >> qte;
+
+              Produit p(id,nom,desc,PU,qte);
+              SQLUpdateProduit(ref(p) , id);
+
+
+
+            }
+
+            if (choix == 'c')
+            {
+              /* code */
+              system("clear");
+              SQLSelectProduit();
+              
+            }
+            
+
+            // cout << "Selected produit" << endl;
         }
-        else if (choix == 3) {
+        if (choix == 3) {
             system("clear");
             // cout << "Selected facture" << endl;
         }

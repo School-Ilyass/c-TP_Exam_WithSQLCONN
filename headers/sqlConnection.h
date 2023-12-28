@@ -124,7 +124,7 @@ int SQLInsertProduit(Produit &obj) {
         /* code */
         string Query = "INSERT INTO Produit VALUES(" + to_string(obj.getID()) + ",'" + obj.getNom() + "','" + obj.getDesc() + "'," + to_string(obj.getPU()) + "," + to_string(obj.getQte()) + ");";
         sql::ResultSet* MyResPTR = SqlConnection(Query);
-    
+
         cout << "Line Inserted " << '\n';
 
         delete MyResPTR; // Clean up the result set
@@ -137,29 +137,23 @@ int SQLInsertProduit(Produit &obj) {
     return 0;
 }
 
-int SQLInsertClient() {
-    sql::ResultSet* MyResPTR = SqlConnection("select * from Client");
+int SQLInsertClient(Client &obj) {
+    int NO = 0;
+    try
+    {
+        /* code */
+        string Query = "INSERT INTO Client VALUES(" + to_string(obj.getID()) + ",'" + obj.getNom() + "','" + obj.getPrenom() + "'," + obj.getAddresse()  + ");";
+        sql::ResultSet* MyResPTR = SqlConnection(Query);
+    
+        cout << "Line Inserted " << '\n';
 
-    if (MyResPTR == nullptr) {
-        // error handling
-        cout << "MyResPTR: Is null " << endl;
-        return 1;
+        delete MyResPTR; // Clean up the result set
     }
-
-    while (MyResPTR->next()) {
-        int id = MyResPTR->getInt("id");
-        string nom = MyResPTR->getString("nom");
-        string prenom = MyResPTR->getString("prenom");
-        string adresse = MyResPTR->getString("adresse");
-
-        cout << "ID: " << id << endl;
-        cout << "Name: " << nom << endl;
-        cout << "Prenom: " << prenom << endl;
-        cout << "adresse: " << adresse << endl;
+    catch(const std::exception& e)
+    {
+        cerr << e.what() << '\n';
     }
-
-    delete MyResPTR; // Clean up the result set
-
+    
     return 0;
 }
 
